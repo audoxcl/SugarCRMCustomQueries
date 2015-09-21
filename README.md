@@ -1,0 +1,2 @@
+# SugarCRMCustomQueries
+SugarCRM Custom Queries
