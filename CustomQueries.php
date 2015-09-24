@@ -7,7 +7,8 @@
 
 if(!defined('sugarEntry')) define('sugarEntry', true);
 
-$customQueriesVersion = 1.5;
+$customQueriesVersion = 1.6;
+
 global $db;
 global $sugar_config, $app_list_strings, $GLOBALS;
 global $current_user;
