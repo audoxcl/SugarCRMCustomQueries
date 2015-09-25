@@ -6,4 +6,4 @@ This module has two main features:
 2. To make remotely queries (from other apps) to your CRM via web services and receive data in JSON format
 
 Documentation available here:
-[Click here!](http://www.sugarqueries.com)
+[www.sugarqueries.com](http://www.sugarqueries.com)
