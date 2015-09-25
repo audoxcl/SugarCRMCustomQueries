@@ -1,9 +1,13 @@
 <?php
 
-/********************************************************************************
- * Copyright (C) 2015 Audox Ingeniería Ltda.
- * All Rights Reserved.
- ********************************************************************************/
+/*********************************************************************************
+* This code was developed by:
+* Audox Ingeniería Ltda.
+* You can contact us at:
+* Web: www.audox.cl
+* Email: info@audox.cl
+* Skype: audox.ingenieria
+********************************************************************************/
 
 if(!defined('sugarEntry')) define('sugarEntry', true);
 
