@@ -13,6 +13,17 @@ global $db;
 global $sugar_config, $app_list_strings, $GLOBALS;
 global $current_user;
 
+// Validate $SugarQueriesApiKey to enable the use of this module
+// Feel free to disable it or edit it and validate the use of this module against other criteria for your own purposes
+function validate($url, $fields){
+	$curl = curl_init($url);
+	curl_setopt($curl, CURLOPT_POST, true); 
+	curl_setopt($curl, CURLOPT_POSTFIELDS, $fields);
+	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+	$response = json_decode(curl_exec($curl));
+	return $response->licence;
+}
+
 $SugarQueriesApiKey = $sugar_config['CustomQueries']['ApiKey'];
 $url="http://www.sugarqueries.com/validate.php";
 $fields = array(
@@ -20,12 +31,8 @@ $fields = array(
 	'Url' => $sugar_config['site_url'],
 	'ApiKey' => $SugarQueriesApiKey,
 );
-$curl = curl_init($url);
-curl_setopt($curl, CURLOPT_POST, true); 
-curl_setopt($curl, CURLOPT_POSTFIELDS, $fields);
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-$response = json_decode(curl_exec($curl));
-if($response->licence == 0) die(json_encode(array('version' => $customQueriesVersion, 'error' => 1, 'msg' => 'No Valid License')));
+
+if(validate($url, $fields) == 0) die(json_encode(array('version' => $customQueriesVersion, 'error' => 1, 'msg' => 'No Valid License')));
 
 if($_REQUEST['entryPoint']==='CustomQueriesRemote'){
 	$user_hash="encrypt(lower(md5('".$_SERVER['PHP_AUTH_PW']."')),user_hash)";
