@@ -1,1 +1,5 @@
 *.zip
+/OtherFiles
+/clients
+jquery-1.3.2.js
+manifest_forSugarCRMProfessional.php
