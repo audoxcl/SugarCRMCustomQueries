@@ -7,3 +7,6 @@ This module has two main features:
 
 Documentation available here:
 [www.sugarqueries.com](http://www.sugarqueries.com)
+
+Download:
+[Here you can download ZIP file ready to install in your CRM instance](https://github.com/audoxcl/SugarCRMCustomQueries/releases/latests/download/CustomQueries.zip)
