@@ -11,13 +11,16 @@ $manifest = array(
 	'acceptable_sugar_versions' => array(
 		'6*',
 		'7*',
+		'8*',
+		'9*',
+		'10*',
 	),
 	'is_uninstallable' => true,
 	'name' => 'Custom Queries',
-	'author' => 'Audox Ingenieria Ltda',
+	'author' => 'Audox Ingenieria SpA.',
 	'description' => 'Custom Queries',
-	'published_date' => '2017/07/09',
-	'version' => 'v1.7',
+	'published_date' => '2020/06/15',
+	'version' => 'v1.9',
 	'type' => 'module',
 );
 
@@ -50,7 +53,7 @@ $installdefs = array(
 	),
 	'language' => array(
 		array(
-			'from' => '<basepath>/en_us.CustomQueries.php',
+			'from' => '<basepath>/en_us.CustomQueries.lang.php',
 			'to_module' => 'application',
 			'language' => 'en_us',
 		)

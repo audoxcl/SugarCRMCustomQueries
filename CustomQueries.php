@@ -2,7 +2,7 @@
 
 /*********************************************************************************
 * This code was developed by:
-* Audox Ingeniería Ltda.
+* Audox Ingenierï¿½a Ltda.
 * You can contact us at:
 * Web: www.audox.cl
 * Email: info@audox.cl
@@ -33,7 +33,7 @@ function validate($url, $fields){
 }
 
 $SugarQueriesApiKey = $sugar_config['CustomQueries']['ApiKey'];
-$url="http://www.sugarqueries.com/validate.php";
+$url="https://www.sugarqueries.com/validate.php";
 $fields = array(
 	'Remote' => $_SERVER['REMOTE_ADDR'],
 	'Url' => $sugar_config['site_url'],
@@ -116,30 +116,34 @@ if(isset($_REQUEST['queries']) && $current_user->is_admin){
 		$query = trim($query);
 		if($options["show_queries"] == true) $html_result.="Query: ".$query."<br />";
 		$array_result['results'][$query_id]['query']=$query;
-		$res=$db->query($query, true, 'Error');
-		$html_result.="<table id=\"table_".$query_id."\" border=\"1\" cellspacing=0 cellpadding=0>";
-		$header_style="style=\"background-color:black; color:white;\"";
-		$i = 1;
-		while($row=$db->fetchByAssoc($res)){
-			if($i==1){
-				$html_result.="<tr><td ".$header_style.">#</td>";
+		$res=$db->query($query, false, 'Error');
+		$lastDbError = $db->lastDbError();
+		if($lastDbError == false){
+			$html_result.="<table id=\"table_".$query_id."\" border=\"1\" cellspacing=0 cellpadding=0>";
+			$header_style="style=\"background-color:black; color:white;\"";
+			$i = 1;
+			while($row=$db->fetchByAssoc($res)){
+				if($i==1){
+					$html_result.="<tr><td ".$header_style.">#</td>";
+					foreach ($row as $field => $value){
+						$html_result.="<td ".$header_style.">".$field."</td>";
+						$array_result['results'][$query_id]['header'][]=$field;
+						}
+					$html_result.="</tr>";
+				}
+				$html_result.="<tr><td>".$i."</td>";
 				foreach ($row as $field => $value){
-					$html_result.="<td ".$header_style.">".$field."</td>";
-					$array_result['results'][$query_id]['header'][]=$field;
+					$value = str_replace("\r\n", "", $value);
+					$html_result.="<td>".$value."</td>";
 					}
 				$html_result.="</tr>";
+				$array_result['results'][$query_id]['rows'][$i]=$row;
+				$i++;
 			}
-			$html_result.="<tr><td>".$i."</td>";
-			foreach ($row as $field => $value){
-				$value = str_replace("\r\n", "", $value);
-				$html_result.="<td>".$value."</td>";
-				}
-			$html_result.="</tr>";
-			$array_result['results'][$query_id]['rows'][$i]=$row;
-			$i++;
+			$html_result.="</table>";
 		}
-		$html_result.="</table>";
-		if($_REQUEST['entryPoint']==='CustomQueries' || $_REQUEST['format']==='html'){
+		else $html_result .= $lastDbError."<br/>";
+		if(($_REQUEST['entryPoint']==='CustomQueries' || $_REQUEST['format']==='html') && $lastDbError == false){
 			$html_result.="<input value=\"View CSV\" type=\"button\" onclick=\"$('#table_".$query_id."').table2CSV()\">";
 			$html_result.='<form id ="get_csv_form_table_'.$query_id.'" action="index.php?entryPoint=getCSV" method ="post" > 
 <input type="hidden" id="csv_text_table_'.$query_id.'" name="csv_text">
