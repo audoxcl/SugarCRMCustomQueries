@@ -8,5 +8,8 @@ This module has two main features:
 Documentation available here:
 [www.sugarqueries.com](http://www.sugarqueries.com)
 
+YouTube Examples:
+[https://www.youtube.com/watch?v=xmUjeT5rvIk](https://www.youtube.com/watch?v=xmUjeT5rvIk)
+
 Download:
 [Here you can download ZIP file ready to install in your CRM instance](https://github.com/audoxcl/SugarCRMCustomQueries/releases/latest/download/CustomQueries.zip)
