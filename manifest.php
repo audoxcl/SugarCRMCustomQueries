@@ -20,7 +20,7 @@ $manifest = array(
 	'author' => 'Audox Ingenieria SpA.',
 	'description' => 'Custom Queries',
 	'published_date' => '2020/06/15',
-	'version' => 'v1.9',
+	'version' => 'v1.20',
 	'type' => 'module',
 );
 
