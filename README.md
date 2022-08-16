@@ -1,12 +1,9 @@
-# SugarCRMCustomQueries
+# SugarCRM CustomQueries
 
 This module has two main features:
 
 1. To execute advanced queries directly in the instance database (like PhpMyAdmin)
 2. To execute queries (from other apps) to your CRM via web services and receive data in JSON format
-
-Documentation available here:  
-[www.sugarqueries.com](http://www.sugarqueries.com)
 
 YouTube Examples:  
 [https://www.youtube.com/watch?v=xmUjeT5rvIk](https://www.youtube.com/watch?v=xmUjeT5rvIk)
